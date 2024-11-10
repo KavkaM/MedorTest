@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace DB
 {
-    public class AppDbContext : DbContext
+    public class HistoryDbContext : DbContext
     {
-        public AppDbContext(string connectionString) : base(connectionString)
+        public HistoryDbContext(string connectionString) : base(connectionString)
         {
         }
         public DbSet<Record> Records { get; set; }

@@ -4,8 +4,8 @@ namespace DB
 {
     public class DBService
     {
-        private readonly AppDbContext _appDbContext;
-        public DBService(AppDbContext appDbContext) 
+        private readonly HistoryDbContext _appDbContext;
+        public DBService(HistoryDbContext appDbContext) 
         { 
             _appDbContext = appDbContext;
         }
