@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace DB
 {
-    public class HistoryDbContext : DbContext
+    public class BitcoinHistoryDbContext : DbContext
     {
-        public HistoryDbContext(string connectionString) : base(connectionString)
+        public BitcoinHistoryDbContext(string connectionString) : base(connectionString)
         {
         }
         public DbSet<Record> Records { get; set; }

@@ -7,7 +7,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<CoinDeskService>();
 builder.Services.AddSingleton<DBService>();
 builder.Services.AddScoped<CNBService>();
-builder.Services.AddSingleton<HistoryDbContext>(serviceProvider => new HistoryDbContext(builder.Configuration["DefaultConnection:AppDbConnectionString"]));
+builder.Services.AddSingleton<BitcoinHistoryDbContext>(serviceProvider => new BitcoinHistoryDbContext(builder.Configuration["DefaultConnection:BitcoinHistoryDbConnectionString"]));
 
 var app = builder.Build();
 
