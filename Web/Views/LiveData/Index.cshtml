@@ -1,0 +1,27 @@
+﻿@model LiveDataViewModel
+@{
+    ViewData["Title"] = "Live Data";
+}
+
+<div class="container mt-4">
+    <h2>Aktuální cena Bitcoinu</h2>
+    <div class="grid-container">
+        @foreach(var price in Model.Data)
+        {
+            <div class="grid-item">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>@price.Key</h4>
+                        <p class="lead">@price.Value.ToString("N2")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+     <input type="button" value="Ulož aktuální cenu" onclick="location.href='@Url.Action("SaveData", "LiveData")'" />
+</div>
+<script>
+    setTimeout(function () {
+        window.location.reload(1);
+    }, 30000);
+</script>

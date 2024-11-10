@@ -1,0 +1,47 @@
+﻿@model SavedDataViewModel
+@{
+    ViewData["Title"] = "Saved Data";
+}
+
+@*
+Graf
+*@
+
+
+
+<div class="container mt-4">
+    <h2>Historický vývoj ceny Bitcoinu</h2>
+    <form method="post" asp-controller="SavedData" asp-action="SaveChanges">
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col"><i class="fas fa-trash-alt"></i></th>
+                <th scope="col">Datum</th>
+            @foreach (var currency in Model.Currencies.OrderBy(d=>d.Id))
+            {
+                <th scope="col">@currency.CurrencyCode</th>
+            }
+                    <th scope="col">Poznámka</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (int i = 0; i < Model.SavedRows.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(m => m.SavedRows[i].Id)
+                        @Html.CheckBoxFor(m => m.SavedRows[i].Selected)
+                    </td>
+                    <td>@Model.SavedRows[i].Date.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                    @foreach (var rate in Model.SavedRows[i].Rates.OrderBy(d => d.Key))
+                    {
+                            <td>@rate.Value.ToString("N2")</td>
+                    }                    
+                    <td>@Html.TextBoxFor(m => m.SavedRows[i].Note)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <input type="submit" value="Ulož změny"/>
+    </form>
+</div>
